@@ -4,8 +4,7 @@ services:
       context: .
     container_name: api_address_bucket_moro
     volumes:
-      - './www:/var/www'
-      - './.ssh/:/root/.ssh'
+      - './appplication:/var/www'
     ports:
       - '1599:80'
     working_dir: /var/www
