@@ -1,0 +1,18 @@
+services:
+  api_address_bucket_moro:
+    build:
+      context: .
+    container_name: api_address_bucket_moro
+    volumes:
+      - './www:/var/www'
+      - './.ssh/:/root/.ssh'
+    ports:
+      - '1599:80'
+    working_dir: /var/www
+  api_address_bucket_moro_db:
+    image: 'mysql:latest'
+    container_name: api_address_bucket_moro_db
+    environment:
+      - MYSQL_ROOT_PASSWORD=myverystrongpassword
+    ports:
+      - '2306:3306'
