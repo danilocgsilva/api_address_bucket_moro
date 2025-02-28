@@ -15,7 +15,7 @@ class ApiController extends Controller
     public function index()
     {
         $apis = Api::all();
-        return view('apis.index', compact('apis'));
+        return view('models.api.index', compact('apis'));
     }
 
     /**
@@ -23,7 +23,7 @@ class ApiController extends Controller
      */
     public function create()
     {
-        return view('apis.create');
+        return view('models.api.create');
     }
 
     /**
@@ -32,12 +32,14 @@ class ApiController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'address' => 'required|string|max:255',
-            'description' => 'required|string',
+            'address' => 'nullable|string|max:255',
+            'description' => 'nullable|string',
+            'name' => 'nullable|required|string',
+            'documentation' => 'required|string',
         ]);
 
         $api = Api::create($validatedData);
-        return redirect()->route('apis.index')->with('success', 'API created successfully.');
+        return redirect()->route('api.index')->with('success', 'API created successfully.');
     }
 
     /**
@@ -45,7 +47,7 @@ class ApiController extends Controller
      */
     public function show(Api $api)
     {
-        return view('apis.show', compact('api'));
+        return view('models.api.show', compact('api'));
     }
 
     /**
@@ -53,7 +55,7 @@ class ApiController extends Controller
      */
     public function edit(Api $api)
     {
-        return view('apis.edit', compact('api'));
+        return view('models.api.edit', compact('api'));
     }
 
     /**
@@ -62,12 +64,14 @@ class ApiController extends Controller
     public function update(Request $request, Api $api)
     {
         $validatedData = $request->validate([
-            'address' => 'required|string|max:255',
-            'description' => 'required|string',
+            'address' => 'nullable|string|max:255',
+            'description' => 'nullable|string',
+            'name' => 'nullable|required|string',
+            'documentation' => 'required|string',
         ]);
 
         $api->update($validatedData);
-        return redirect()->route('apis.index')->with('success', 'API updated successfully.');
+        return redirect()->route('api.index')->with('success', 'API updated successfully.');
     }
 
     /**
@@ -76,7 +80,7 @@ class ApiController extends Controller
     public function destroy(Api $api)
     {
         $api->delete();
-        return redirect()->route('apis.index')->with('success', 'API deleted successfully.');
+        return redirect()->route('api.index')->with('success', 'API deleted successfully.');
     }
 }
 

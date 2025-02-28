@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('apis', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('address')->nullable();
+            $table->string('description')->nullable();
+            $table->string('documentation');
             $table->timestamps();
         });
     }

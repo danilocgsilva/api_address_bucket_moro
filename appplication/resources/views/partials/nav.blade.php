@@ -8,10 +8,11 @@
                 </div>
 
                 <!-- Primary Navbar items -->
-                <div class="hidden md:flex items-center space-x-1">
+                <!-- <div class="hidden md:flex items-center space-x-1">
                     <a href="#" class="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">Create</a>
                     <a href="#" class="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">List</a>
-                </div>
+                </div> -->
+                <x-main-menu-desktop/>
 
                 <!-- Mobile menu button -->
                 <div class="md:hidden flex items-center">
@@ -31,10 +32,11 @@
             </div>
         </div>
         <!-- Mobile Menu -->
-        <div class="hidden mobile-menu">
+        <!-- <div class="hidden mobile-menu">
             <ul>
                 <li><a href="#" class="block text-sm px-2 py-4 text-white bg-green-500 font-semibold">Create</a></li>
                 <li><a href="#" class="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300">List</a></li>
             </ul>
-        </div>
+        </div> -->
+        <x-main-menu-mobile />
     </nav>

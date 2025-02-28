@@ -7,9 +7,16 @@ services:
       - './appplication:/var/www'
     working_dir: /var/www
     network_mode: host
+    # ports:
+    #   - '8000:8080'
+    #   - '80:80'
+    expose:
+      - 8000
   api_address_bucket_moro_db:
     image: 'mysql:latest'
     container_name: api_address_bucket_moro_db
     environment:
       - MYSQL_ROOT_PASSWORD=myverystrongpassword
     network_mode: host
+    # ports:
+    #   - '2306:3306'

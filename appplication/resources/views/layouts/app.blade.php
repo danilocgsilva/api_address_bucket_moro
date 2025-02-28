@@ -12,7 +12,9 @@
     @include('partials.nav')
 
     <main class="max-w-4xl mx-auto px-4 py-8">
-        <h1 class="text-4xl font-bold text-gray-800 mb-4">@yield('title', 'Laravel')</h1>
+        <h1 class="@page_h1_classes">
+            @yield('title', 'Laravel')
+        </h1>
 
         <article class="prose prose-lg max-w-none">
             @yield('content')
