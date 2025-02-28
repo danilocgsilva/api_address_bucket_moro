@@ -4,12 +4,12 @@ services:
       context: .
     container_name: api_address_bucket_moro
     volumes:
-      - './appplication:/var/www'
+      - './application:/var/www'
     working_dir: /var/www
     network_mode: host
     # ports:
-    #   - '8000:8080'
-    #   - '80:80'
+      # - '8000:8080'
+      # - '80:80'
     expose:
       - 8000
   api_address_bucket_moro_db:
