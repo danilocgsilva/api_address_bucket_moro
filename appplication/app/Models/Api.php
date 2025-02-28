@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Api extends Model
 {
-    protect $fillabel = ["address", "decription"];
+    protected $fillable = ["address", "description"];
 }
