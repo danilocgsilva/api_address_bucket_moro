@@ -10,3 +10,9 @@
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}

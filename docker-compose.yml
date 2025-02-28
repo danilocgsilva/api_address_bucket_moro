@@ -5,13 +5,11 @@ services:
     container_name: api_address_bucket_moro
     volumes:
       - './appplication:/var/www'
-    ports:
-      - '1599:80'
     working_dir: /var/www
+    network_mode: host
   api_address_bucket_moro_db:
     image: 'mysql:latest'
     container_name: api_address_bucket_moro_db
     environment:
       - MYSQL_ROOT_PASSWORD=myverystrongpassword
-    ports:
-      - '2306:3306'
+    network_mode: host
