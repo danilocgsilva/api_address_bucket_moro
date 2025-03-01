@@ -16,7 +16,7 @@
             <form class="mt-8 space-y-6" action="{{ route('api.update', $api->id) }}" method="POST">
                 @method('PUT')
                 @csrf
-                <div class="rounded-md shadow-sm -space-y-px">
+                <div id="api-edit__main-form" class="rounded-md shadow-sm -space-y-px">
                     <div>
                         <label for="name" class="sr-only">Name</label>
                         <input id="name" name="name" type="text" required class="@input_text_common_classes rounded-t-md"
@@ -30,16 +30,59 @@
                     <div>
                         <label for="documentation" class="sr-only">Documentation</label>
                         <input id="documentation" name="documentation" type="text" required
-                            class="@input_text_common_classes" placeholder="Documentation link" value="{{ $api->documentation }}">
+                            class="@input_text_common_classes" placeholder="Documentation link"
+                            value="{{ $api->documentation }}">
                     </div>
                     <div>
                         <label for="description" class="sr-only">Description</label>
                         <textarea id="description" name="description" rows="4"
-                            class="@input_text_common_classes rounded-b-md" placeholder="Description">{{ $api->description }}</textarea>
+                            class="@input_text_common_classes rounded-b-md"
+                            placeholder="Description">{{ $api->description }}</textarea>
                     </div>
                 </div>
 
                 @csrf
+
+                <!-- <div class="flex gap-4">
+                    <div class="flex-1">
+                        <label for="exampleInput" class="sr-only">Example Input</label>
+                        <input type="text" id="exampleInput" name="exampleInput"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm 
+                            focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                            placeholder="Enter something..." />
+                    </div>
+
+                    <div class="flex-1">
+                        <button type="submit"
+                            class="
+                            w-full 
+                            px-4 
+                            py-2 
+                            bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                            Submita
+                        </button>
+                    </div>
+                </div> -->
+
+                <!-- <input type="text" class="w-full"> -->
+                <!-- <input type="text" class="
+                w-full
+                px-3 py-2
+                border border-gray-300 rounded-md shadow-sm
+                focus:outline-none focus:ring-blue-500 focus:border-blue-500
+                " placeholder="Add new query parameter" /> -->
+
+                <button 
+                id="api-edit__add-new-query-parameter"
+                class="
+                w-full
+                px-3 py-2
+                bg-blue-500
+                text-white
+                rounded-md
+                hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
+                "
+                type="button">Add new query parameter</button>
 
                 <div>
                     <button type="submit"
@@ -48,8 +91,28 @@
                     </button>
                 </div>
             </form>
+
+
+
+
+
         </div>
     </div>
 
+
+    <script>
+
+        let main_form = document.getElementById("api-edit__main-form");
+        
+        let button_add_new_query_parameter = document.getElementById("api-edit__add-new-query-parameter");
+        button_add_new_query_parameter.addEventListener("click", function() {
+            let input = document.createElement("input");
+            input.type = "text";
+            input.className = "w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500";
+            input.placeholder = "Add new query parameter";
+            // document.querySelector("form").appendChild(input);
+            main_form.insertAdjacentElement("afterend", input);
+        });
+    </script>
 
 @endsection

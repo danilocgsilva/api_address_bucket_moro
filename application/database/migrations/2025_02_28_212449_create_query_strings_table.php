@@ -16,6 +16,9 @@ return new class extends Migration
             $table->string("term");
             $table->bigInteger("api_id")->unsigned();
             $table->timestamps();
+            $table->foreign("api_id")
+                ->references("id")
+                ->on("apis");
         });
     }
 

@@ -17,6 +17,6 @@ services:
     container_name: api_address_bucket_moro_db
     environment:
       - MYSQL_ROOT_PASSWORD=myverystrongpassword
-    network_mode: host
-    # ports:
-    #   - '2306:3306'
+    # network_mode: host
+    ports:
+      - '2306:3306'

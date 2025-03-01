@@ -3,8 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Api extends Model
 {
     protected $fillable = ["address", "description", "name", "documentation"];
+
+    public function queryStrings(): HasMany
+    {
+        return $this->hasMany(QueryString::class, "api_id", "id");
+    }
 }
