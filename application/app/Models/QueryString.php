@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class QueryString extends Model
 {
-    protected $fillable = ["term"];
+    protected $fillable = ["term", "api_id"];
 
     public function api(): BelongsTo
     {

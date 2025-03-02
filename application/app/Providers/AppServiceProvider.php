@@ -29,7 +29,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
         Blade::directive('input_text_common_classes', function ($expression) {
-            return "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm";
+            return "appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm";
         });
 
         Blade::directive('main_menu_desktop_classes', function ($expression) {
