@@ -54,24 +54,35 @@ class QueryStringController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(QueryString $queryString)
+    public function edit(Api $api, QueryString $querystring)
     {
-        //
+        return view('models.query_string.edit', [
+            'api' => $api, 'queryString' => $querystring
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, QueryString $queryString)
+    public function update(Request $request, Api $api, QueryString $querystring)
     {
-        //
+        $validatedData = $request->validate([
+            'term' => 'string|max:255',
+        ]);
+
+        $querystring->update($validatedData);
+        return redirect()
+            ->route('api.edit', ["api" => $api->id])
+            ->with('success', 'API updated successfully.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(QueryString $queryString)
+    public function destroy(Api $api, QueryString $querystring)
     {
-        //
+        $querystring->delete();
+        return redirect()->route('api.edit', ["api" => $querystring->api_id])
+            ->with('success', 'Query string deleted successfully.');
     }
 }

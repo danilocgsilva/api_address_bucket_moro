@@ -58,9 +58,6 @@ class ApiController extends Controller
         return view('models.api.edit', compact('api'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Api $api)
     {
         $validatedData = $request->validate([
@@ -74,9 +71,6 @@ class ApiController extends Controller
         return redirect()->route('api.index')->with('success', 'API updated successfully.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Api $api)
     {
         $api->delete();

@@ -1,17 +1,12 @@
 @extends('layouts.app')
 
 @section('title')
-    Edit
+    Edit an api
 @endsection
 
 @section('content')
     <div class="@inner_page_container_classes">
         <div class="w-full space-y-8 bg-white p-8 rounded-lg shadow-lg">
-            <div>
-                <h2 class="text-center text-3xl font-extrabold text-gray-900">
-                    Add new api address
-                </h2>
-            </div>
             <form class="mt-8 space-y-6" action="{{ route('api.update', $api->id) }}" method="POST">
                 @method('PUT')
                 @csrf
@@ -39,11 +34,9 @@
                     </div>
                 </div>
 
+                <h3>Query strings:</h3>
                 <div class="mb-4">
-                    <label class="block text-gray-700 font-bold">Query strings</label>
-                    @foreach ($api->queryStrings as $queryString)
-                        <p class="text-gray-900">{{ $queryString->term }}</p>
-                    @endforeach
+                    @include('models.api._query_strings')
                 </div>
 
                 @csrf

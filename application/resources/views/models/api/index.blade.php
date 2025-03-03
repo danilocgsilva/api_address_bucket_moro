@@ -29,23 +29,23 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($apis as $model)
+                        @foreach ($apis as $api)
                             <tr>
                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    <p class="text-gray-900 whitespace-no-wrap">{{ $model->name }}</p>
+                                    <p class="text-gray-900 whitespace-no-wrap">{{ $api->name }}</p>
                                 </td>
                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    <p class="text-gray-900 whitespace-no-wrap">{{ $model->documentation }}</p>
+                                    <p class="text-gray-900 whitespace-no-wrap">{{ $api->documentation }}</p>
                                 </td>
                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    <p class="text-gray-900 whitespace-no-wrap">{{ $model->description }}</p>
+                                    <p class="text-gray-900 whitespace-no-wrap">{{ $api->description }}</p>
                                 </td>
                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    <p class="text-gray-900 whitespace-no-wrap">{{ $model->address }}</p>
+                                    <p class="text-gray-900 whitespace-no-wrap">{{ $api->address }}</p>
                                 </td>
                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                     <div class="flex space-x-2">
-                                        <a href="{{ route('api.edit', $model->id) }}"
+                                        <a href="{{ route('api.edit', $api->id) }}"
                                             class="text-indigo-600 hover:text-indigo-900">
                                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -54,7 +54,7 @@
                                                 </path>
                                             </svg>
                                         </a>
-                                        <form action="{{ route('api.destroy', $model->id) }}" method="POST"
+                                        <form action="{{ route('api.destroy', $api->id) }}" method="POST"
                                             onsubmit="return confirm('Are you sure you want to delete this item?');">
                                             @csrf
                                             @method('DELETE')
