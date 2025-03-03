@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\QueryString;
+use App\Models\QueryTerm;
 use Illuminate\Http\Request;
 use App\Models\Api;
 use Illuminate\View\View;
@@ -27,7 +27,7 @@ class QueryTermController extends Controller
             'term' => 'required|string|max:255',
         ]);
 
-        $queryString = new QueryString();
+        $queryString = new QueryTerm();
         $queryString->term = $request->input('term');
         $queryString->api_id = $request->input('api_id');
         $queryString->save();
@@ -39,7 +39,7 @@ class QueryTermController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(QueryString $queryString)
+    public function show(QueryTerm $queryString)
     {
         //
     }
@@ -47,23 +47,23 @@ class QueryTermController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Api $api, QueryString $querystring)
+    public function edit(Api $api, QueryTerm $term)
     {
-        return view('models.query_string.edit', [
-            'api' => $api, 'queryString' => $querystring
+        return view('models.queryterm.edit', [
+            'api' => $api, 'queryString' => $term
         ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Api $api, QueryString $querystring)
+    public function update(Request $request, Api $api, QueryTerm $term)
     {
         $validatedData = $request->validate([
             'term' => 'string|max:255',
         ]);
 
-        $querystring->update($validatedData);
+        $term->update($validatedData);
         return redirect()
             ->route('api.edit', ["api" => $api->id])
             ->with('success', 'API updated successfully.');
@@ -72,7 +72,7 @@ class QueryTermController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Api $api, QueryString $querystring)
+    public function destroy(Api $api, QueryTerm $querystring)
     {
         $querystring->delete();
         return redirect()->route('api.edit', ["api" => $querystring->api_id])

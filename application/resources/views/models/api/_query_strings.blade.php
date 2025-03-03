@@ -12,14 +12,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($api->queryStrings as $queryString)
+                    @foreach ($api->queryTerms as $queryString)
                         <tr>
                             <td class="px-5 py-2 border-b border-gray-200 bg-white text-sm">
                                 <p class="text-gray-900 whitespace-no-wrap">{{ $queryString->term }}</p>
                             </td>
                             <td class="px-5 py-2 border-b border-gray-200 bg-white text-sm">
                                 <div class="flex space-x-2 justify-center">
-                                    <a href="{{ route('api.querystring.edit', [ 'api' => $api->id, 'querystring' => $queryString->id ]) }}"
+                                    <a href="{{ route('api.terms.edit', [ 'api' => $api->id, 'term' => $queryString->id ]) }}"
                                         class="text-indigo-600 hover:text-indigo-900">
                                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                                             xmlns="http://www.w3.org/2000/svg">
@@ -28,7 +28,7 @@
                                             </path>
                                         </svg>
                                     </a>
-                                    <form action="{{ route('api.querystring.destroy', ["api" => $api->id, "querystring" => $queryString->id]) }}" method="POST"
+                                    <form action="{{ route('api.terms.destroy', ["api" => $api->id, "term" => $queryString->id]) }}" method="POST"
                                         onsubmit="return confirm('Are you sure you want to delete this item?');">
                                         @csrf
                                         @method('DELETE')

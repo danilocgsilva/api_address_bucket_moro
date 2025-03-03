@@ -60,9 +60,9 @@
 
             <div class="flex flex-wrap">
                 <div class="w-full p-2">
-                    <a href="{{ route('api.fetchingquerty.create', ['api' => $api]) }}"
+                    <a href="{{ route('api.querystring.create', ['api' => $api]) }}"
                         class="inline-flex items-center px-6 py-2 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-700 justify-center w-full">
-                        Create a fetching query
+                        Create a query string
                     </a>
                 </div>
             </div>

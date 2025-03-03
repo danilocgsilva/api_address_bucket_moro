@@ -8,7 +8,7 @@
 @section('content')
     <div class="mb-4">
 
-        <form action="{{ route('api.fetchingquerty.store', $api->id) }}" method="POST">
+        <form action="{{ route('api.querystring.store', $api->id) }}" method="POST">
             @csrf
 
             <label for="query_string" class="block text-sm font-medium text-gray-700 mb-1">

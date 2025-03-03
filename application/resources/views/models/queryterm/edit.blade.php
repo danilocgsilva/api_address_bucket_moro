@@ -12,7 +12,7 @@
                     Edit a term from {{ $api->name }}: {{ $queryString->term }}
                 </h2>
             </div>
-            <form class="mt-8 space-y-6" action="{{ route('api.querystring.update', [ 'api' => $api->id, 'querystring' => $queryString->id ] ) }}" method="POST">
+            <form class="mt-8 space-y-6" action="{{ route('api.terms.update', [ 'api' => $api->id, 'term' => $queryString->id ] ) }}" method="POST">
 
                 <div class="flex flex-wrap">
                     <div class="w-full md:w-2/3 p-2">

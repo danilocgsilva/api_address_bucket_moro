@@ -9,7 +9,7 @@ class Api extends Model
 {
     protected $fillable = ["address", "description", "name", "documentation"];
 
-    public function queryStrings(): HasMany
+    public function queryTerms(): HasMany
     {
         return $this->hasMany(QueryTerm::class, "api_id", "id");
     }
