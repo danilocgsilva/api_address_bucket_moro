@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Api;
 use Illuminate\View\View;
 
-class QueryStringController extends Controller
+class QueryTermController extends Controller
 {
     public function index()
     {

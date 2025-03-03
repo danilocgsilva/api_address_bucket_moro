@@ -18,8 +18,12 @@ In the web routes, there are a relationship between models. I used a native reso
 
 ### Models
 
-Api: the api to be stored.
+**Api**: the api to be stored.
 
-QueryString: representation for query string.
+**QueryTerm**: representation for query term in the path to fetch an information from an api.
 
-FetchingQuery: the composition of an endpoint, its paths and the endpoint queries.
+**FetchingQuery**: the composition of an endpoint, its paths and the endpoint queries. May have several `QueryString`. For example, a single FetchingQuery may be a compound of an api with an address of `https://imdb.iamidiotareyoutoo.com/search` and a single `TermItem` which may be the `q`. So a FetchingQuery can would be an address like: `https://imdb.iamidiotareyoutoo.com/search?q={some_value}`. A single FetchingQuery mayu have several `TermItem`. For exempla, of this same FetchingQuery have a term called `page`, the full result of te fetching query may be `https://imdb.iamidiotareyoutoo.com/search?q={some_value}&page=3`
+
+**TermItem**: binded to a `FetchingQuery` and links to a single `Api` as well. It is like a pivot table between api and fetching query.
+
+
