@@ -1,57 +1,59 @@
+<!-- filepath: /var/www/resources/views/models/fetching_query/create.blade.php -->
 @extends('layouts.app')
 
 @section('title')
-    Create fetching query
+    Create Fetching Query for {{ $api->name }}
 @endsection
 
 @section('content')
+    <div class="mb-4">
 
-    <div class="@inner_page_container_classes">
-        <div class="w-full space-y-8 bg-white p-8 rounded-lg shadow-lg">
-            <div>
-                <h2 class="text-center text-3xl font-extrabold text-gray-900">
-                    Add new api address
-                </h2>
+        <form action="{{ route('api.fetchingquerty.store', $api->id) }}" method="POST">
+            @csrf
+
+            <label for="query_string" class="block text-sm font-medium text-gray-700 mb-1">
+                Choose an option
+            </label>
+
+            <div class="relative">
+                <select id="query_string" name="query_string"
+                    class="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 rounded-md shadow-sm appearance-none bg-white">
+                    <option selected disabled>Select an option</option>
+
+                    @foreach ($api->queryStrings as $queryString)
+                        <option value="{{ $queryString->id }}">{{ $queryString->term }}</option>
+                    @endforeach
+
+                </select>
+
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                    <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                        aria-hidden="true">
+                        <path fill-rule="evenodd"
+                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </div>
             </div>
-            <form class="mt-8 space-y-6" action="{{ route('api.store') }}" method="POST">
-                @csrf
-                <div class="rounded-md shadow-sm -space-y-px">
-                    <div>
-                        <label for="name" class="sr-only">Name</label>
-                        <input id="name" name="name" type="text" required
-                            class="@input_text_common_classes rounded-t-md"
-                            placeholder="Name">
-                    </div>
-                    <div>
-                        <label for="address" class="sr-only">Address</label>
-                        <input id="address" name="address" type="text"
-                            class="@input_text_common_classes"
-                            placeholder="Address">
-                    </div>
-                    <div>
-                        <label for="documentation" class="sr-only">Documentation</label>
-                        <input id="documentation" name="documentation" type="text" required
-                            class="@input_text_common_classes"
-                            placeholder="Documentation link">
-                    </div>
-                    <div>
-                        <label for="description" class="sr-only">Description</label>
-                        <textarea id="description" name="description" rows="4"
-                            class="@input_text_common_classes rounded-b-md"
-                            placeholder="Description"></textarea>
-                    </div>
-                </div>
 
-                @csrf
+            <p class="mt-1 text-sm text-gray-500">Select from the available options above</p>
 
-                <div>
-                    <button type="submit"
-                        class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                        Submit
-                    </button>
-                </div>
-            </form>
-        </div>
+            <input type="submit"
+                class="w-full inline-flex items-center px-4 py-2 my-8 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                value="Create fetching query" />
+
+        </form>
+
     </div>
 
+    </div>
+
+    <script>
+        document.getElementById('select-example').addEventListener('change', function(e) {
+            console.log('Selected option:', e.target.value);
+        });
+    </script>
+
+
+    </script>
 @endsection

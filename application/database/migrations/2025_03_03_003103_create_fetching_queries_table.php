@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('fetching_queries', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger("api_id")->unsigned();
             $table->timestamps();
         });
     }
