@@ -20,7 +20,7 @@
                     class="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 rounded-md shadow-sm appearance-none bg-white">
                     <option selected disabled>Select an option</option>
 
-                    @foreach ($api->queryStrings as $queryString)
+                    @foreach ($api->queryTerms as $queryString)
                         <option value="{{ $queryString->id }}">{{ $queryString->term }}</option>
                     @endforeach
 
