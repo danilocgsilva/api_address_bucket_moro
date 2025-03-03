@@ -57,7 +57,19 @@
                     </div>
                 </div>
 
+                <div class="flex flex-wrap">
+                    <div class="w-full p-2">
+                        <a href="#"
+                            class="inline-flex items-center px-6 py-2 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-700 justify-center w-full">
+                            Click Me!
+                        </a>
+                    </div>
+                </div>
+
+
+
             </form>
+
 
         </div>
     </div>

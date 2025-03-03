@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Create
+    Create fetching query
 @endsection
 
 @section('content')

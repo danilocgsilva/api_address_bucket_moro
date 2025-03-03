@@ -5,24 +5,17 @@ namespace App\Http\Controllers;
 use App\Models\QueryString;
 use Illuminate\Http\Request;
 use App\Models\Api;
+use Illuminate\View\View;
 
 class QueryStringController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create(Request $request)
+    public function create(): View
     {
-        return view('models.query_string.create', [
-            'api' => Api::findOrFail((int) $request->route('api'))
-        ]);
+        return view('fetchingquery.create');
     }
 
     /**

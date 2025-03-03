@@ -15,3 +15,11 @@ It uses the coupled frontend, using the default suggestion from Laravel: Tailwin
 In the listing views, you can see a entries table, having in the same row actions buttons both to edit or delete item. As well the required inline javascript the ask for user confirmation before deletion.
 
 In the web routes, there are a relationship between models. I used a native resource from Laravel to suggests hierarquical route paths.
+
+### Models
+
+Api: the api to be stored.
+
+QueryString: representation for query string.
+
+FetchingQuery: the composition of an endpoint, its paths and the endpoint queries.
