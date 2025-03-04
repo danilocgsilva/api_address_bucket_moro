@@ -38,7 +38,7 @@ class ApiController extends Controller
             'documentation' => 'required|string',
         ]);
 
-        $api = Api::create($validatedData);
+        Api::create($validatedData);
         return redirect()->route('api.index')->with('success', 'API created successfully.');
     }
 

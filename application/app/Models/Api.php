@@ -13,4 +13,9 @@ class Api extends Model
     {
         return $this->hasMany(QueryTerm::class, "api_id", "id");
     }
+
+    public function queryStrings()
+    {
+        return $this->hasMany(QueryString::class, "api_id", "id");
+    }
 }

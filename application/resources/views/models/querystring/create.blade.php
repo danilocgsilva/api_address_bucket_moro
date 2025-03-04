@@ -11,12 +11,12 @@
         <form action="{{ route('api.querystring.store', $api->id) }}" method="POST">
             @csrf
 
-            <label for="query_string" class="block text-sm font-medium text-gray-700 mb-1">
+            <label for="query_term" class="block text-sm font-medium text-gray-700 mb-1">
                 Choose an option
             </label>
 
             <div class="relative">
-                <select id="query_string" name="query_string"
+                <select id="query_term" name="query_term"
                     class="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 rounded-md shadow-sm appearance-none bg-white">
                     <option selected disabled>Select an option</option>
 
@@ -46,7 +46,6 @@
 
     </div>
 
-    </div>
 
     <script>
         document.getElementById('select-example').addEventListener('change', function(e) {

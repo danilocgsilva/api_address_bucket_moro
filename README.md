@@ -30,5 +30,6 @@ In the web routes, there are a relationship between models. I used a native reso
 
 **QueryString**: the composition of several query terms. They are binded to an api. May have several `QueryTerm`s. For example, a single QueryString may be a compound of an api with an address of `https://imdb.iamidiotareyoutoo.com/search` and a single `QueryTerm` which may be the `q`. So a QueryString can represents an address like: `https://imdb.iamidiotareyoutoo.com/search?q={some_value}`. A single QueryString may have several `QueryTerm`. For exempla, of this same FetchingQuery have a term called `page`, the full result of te fetching query may be `https://imdb.iamidiotareyoutoo.com/search?q={some_value}&page=3`
 
+**QueryStringQueryTerm**: linkage between query terms ans query strings.
 
 
