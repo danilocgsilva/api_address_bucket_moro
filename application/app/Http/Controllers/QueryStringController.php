@@ -27,14 +27,40 @@ class QueryStringController extends Controller
 
     public function store(Api $api, Request $request)
     {
+        $newQueryString = new QueryString();
+        $api->queryStrings()->save($newQueryString);
+
+        $newQueryStringQueryTerm = new QueryStringQueryTerm();
+        $newQueryStringQueryTerm->query_term_id = $request->query_term;
+        $newQueryStringQueryTerm->query_string_id = $newQueryString->id;
+        $newQueryStringQueryTerm->save();
+
+        // $newQueryStringQueryTerm = new QueryStringQueryTerm();
+        // $newQueryStringQueryTerm->
+        // $queryString = new QueryString();
+        // $queryString->
+        // $api->queryStrings()->save();
+        
+        // $queryStringQueryTerm = new QueryStringQueryTerm();
+        // $queryStringQueryTerm->query_term_id = $request->query_term;
+        
+        // $newQueryString = new QueryString();
+        // $newQueryString->api_id = $api->id;
+        
+        // $api->queryStrings()->save(
+            
+        // );
         // query_term
         // $justCreatedQueryString = QueryString::create([
         //     "api_id" => $api->id
         // ]);
-        QueryStringQueryTerm::create([
-            "query_string_id" => $justCreatedQueryString->id,
-            "query_term_id" => $request->query_term
-        ]);
+        // $api->queryStrings()->create([
+            
+        // ])
+        // QueryStringQueryTerm::create([
+        //     "query_string_id" => $justCreatedQueryString->id,
+        //     "query_term_id" => $request->query_term
+        // ]);
 
         return redirect()
             ->route('api.show', ["api" => $api->id])

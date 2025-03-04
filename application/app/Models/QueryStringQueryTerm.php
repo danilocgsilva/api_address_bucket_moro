@@ -13,11 +13,11 @@ class QueryStringQueryTerm extends Model
 
     public function queryTerms()
     {
-        return $this->hasMany(QueryTerm::class, "id", "query_term_id");
+        return $this->hasOne(QueryTerm::class, "query_term_id", "id");
     }
 
     public function queryString()
     {
-        return $this->hasOne(QueryString::class, "id", "query_string_id");
+        return $this->belongsTo(QueryString::class, "id", "query_string_id");
     }
 }
