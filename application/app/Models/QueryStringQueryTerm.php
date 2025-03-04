@@ -13,7 +13,7 @@ class QueryStringQueryTerm extends Model
 
     public function queryTerms()
     {
-        return $this->hasOne(QueryTerm::class, "query_term_id", "id");
+        return $this->hasOne(QueryTerm::class, "id", "query_term_id");
     }
 
     public function queryString()

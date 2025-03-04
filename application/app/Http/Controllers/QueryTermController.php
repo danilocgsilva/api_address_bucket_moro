@@ -72,10 +72,10 @@ class QueryTermController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Api $api, QueryTerm $querystring)
+    public function destroy(Api $api, QueryTerm $term)
     {
-        $querystring->delete();
-        return redirect()->route('api.edit', ["api" => $querystring->api_id])
+        $term->delete();
+        return redirect()->route('api.edit', ["api" => $api->id])
             ->with('success', 'Query string deleted successfully.');
     }
 }

@@ -35,33 +35,6 @@ class QueryStringController extends Controller
         $newQueryStringQueryTerm->query_string_id = $newQueryString->id;
         $newQueryStringQueryTerm->save();
 
-        // $newQueryStringQueryTerm = new QueryStringQueryTerm();
-        // $newQueryStringQueryTerm->
-        // $queryString = new QueryString();
-        // $queryString->
-        // $api->queryStrings()->save();
-        
-        // $queryStringQueryTerm = new QueryStringQueryTerm();
-        // $queryStringQueryTerm->query_term_id = $request->query_term;
-        
-        // $newQueryString = new QueryString();
-        // $newQueryString->api_id = $api->id;
-        
-        // $api->queryStrings()->save(
-            
-        // );
-        // query_term
-        // $justCreatedQueryString = QueryString::create([
-        //     "api_id" => $api->id
-        // ]);
-        // $api->queryStrings()->create([
-            
-        // ])
-        // QueryStringQueryTerm::create([
-        //     "query_string_id" => $justCreatedQueryString->id,
-        //     "query_term_id" => $request->query_term
-        // ]);
-
         return redirect()
             ->route('api.show', ["api" => $api->id])
             ->with('success', 'Query string just added.');
@@ -69,5 +42,16 @@ class QueryStringController extends Controller
 
     public function edit(Api $api, Request $request)
     {
+    }
+
+    public function destroy(Api $api, QueryString $querystring)
+    {
+        foreach ($querystring->queryStringQueryTerm as $queryTerm) {
+            $queryTerm->delete();
+        }
+        $querystring->delete();
+        return redirect()->route('api.edit', [
+            "api" => $api->id
+        ]);
     }
 }

@@ -14,7 +14,7 @@ class QueryString extends Model
 
     public function queryStringQueryTerm()
     {
-        return $this->hasMany(QueryStringQueryTerm::class, "id", "query_string_id");
+        return $this->hasMany(QueryStringQueryTerm::class, "query_string_id", "id");
     }
 
     public function api()
@@ -26,11 +26,11 @@ class QueryString extends Model
     {
         $queryTermsArray = [];
         foreach ($this->queryStringQueryTerm as $queryStringQueryTerm) {
-            $queryTermsArray[] = $queryStringQueryTerm->queryTerm->term;
+            $queryTermsArray[] = $queryStringQueryTerm->queryTerms->term;
         }
 
         $queryTermsJoin = implode("&", $queryTermsArray);
         
-        return $this->api->address . "/1234abcd";
+        return $this->api->address . "?" . $queryTermsJoin . "=";
     }
 }

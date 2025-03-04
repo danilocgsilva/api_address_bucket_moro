@@ -34,10 +34,27 @@
                     </div>
                 </div>
 
-                <h3>Query strings:</h3>
+                <h3>Query terms:</h3>
                 <div class="mb-4">
-                    @include('models.api._query_strings')
+                    @include('models.api._query_terms')
                 </div>
+
+                <h3>Query strings:</h3>
+
+                @php
+                $headers = ["Query Strings", "edit"];
+                $entries = $api->queryStrings;
+                $destroyRouteParent = [
+                    "api" => $api->id
+                ]
+                @endphp
+
+                <x-api.edit.edit-entries-table 
+                    :headers="$headers" 
+                    :entries="$entries"
+                    destroy-route="api.querystring.destroy"
+                    :destroy-route-parent="$destroyRouteParent"
+                />
 
                 @csrf
 
