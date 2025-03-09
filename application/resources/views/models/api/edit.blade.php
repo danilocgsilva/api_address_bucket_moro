@@ -5,6 +5,22 @@
 @endsection
 
 @section('content')
+    <form id="delete_query_term_form" method="POST">
+        @csrf
+        @method('DELETE')
+    </form>
+
+    <script>
+        function deleteQueryTerm(element) {
+            if (confirm('Are you sure you want to delete this item?')) {
+                let termId = element.dataset.termId;
+                let deleteQueryForm = document.getElementById('delete_query_term_form');
+                deleteQueryForm.action = `/api/{{ $api->id }}/terms/${termId}`;
+                deleteQueryForm.submit();
+            }
+        }
+    </script>
+
     <div class="@inner_page_container_classes">
         <div class="w-full space-y-8 bg-white p-8 rounded-lg shadow-lg">
             <form class="mt-8 space-y-6" action="{{ route('api.update', $api->id) }}" method="POST">
@@ -42,19 +58,15 @@
                 <h3>Paths with strings:</h3>
 
                 @php
-                $headers = ["Query Strings", "edit"];
-                $entries = $api->queryStrings;
-                $destroyRouteParent = [
-                    "api" => $api->id
-                ]
+                    $headers = ['Query Strings', 'edit'];
+                    $entries = $api->queryStrings;
+                    $destroyRouteParent = [
+                        'api' => $api->id,
+                    ];
                 @endphp
 
-                <x-api.edit.edit-entries-table 
-                    :headers="$headers" 
-                    :entries="$entries"
-                    destroy-route="api.querystring.destroy"
-                    :destroy-route-parent="$destroyRouteParent"
-                />
+                <x-api.edit.edit-entries-table :headers="$headers" :entries="$entries" destroy-route="api.querystring.destroy"
+                    :destroy-route-parent="$destroyRouteParent" />
 
                 @csrf
 
