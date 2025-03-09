@@ -34,19 +34,36 @@ class ApplicationPathsTest extends TestCase
     public function testAddNewQuery()
     {
         $this->prepareAddNewQuery();
-
         $response = $this->get('api/1/terms/create');
-
         $response->assertStatus(200);
     }
 
     public function testAddNewQueryNotExistingApi()
     {
         $this->prepareAddNewQuery();
-
         $response = $this->get('api/2/terms/create');
-
         $response->assertStatus(404);
+    }
+
+    public function testUpdateQuery()
+    {
+        $this->prepareAddNewQuery();
+        $response = $this->get('api/1/edit');
+        $response->assertStatus(200);
+    }
+
+    public function testUpdateQueryNonExistingApi()
+    {
+        $this->prepareAddNewQuery();
+        $response = $this->get('api/2/edit');
+        $response->assertStatus(404);
+    }
+
+    public function testCreateQueryTerm()
+    {
+        $this->prepareAddNewQuery();
+        $response = $this->get('api/1/terms/create');
+        $response->assertStatus(200);
     }
 
     private function prepareAddNewQuery()

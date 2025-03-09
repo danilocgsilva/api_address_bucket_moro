@@ -12,7 +12,7 @@
                     Add new query string for {{ $api->name }}
                 </h2>
             </div>
-            <form class="mt-8 space-y-6" action="{{ route('api.querystring.store', $api->id) }}" method="POST">
+            <form class="mt-8 space-y-6" action="{{ route('api.terms.store', $api->id) }}" method="POST">
 
                 <div class="flex flex-wrap">
                     <div class="w-full md:w-2/3 p-2">
