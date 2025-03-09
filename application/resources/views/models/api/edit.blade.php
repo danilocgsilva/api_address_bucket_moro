@@ -21,6 +21,23 @@
         }
     </script>
 
+    <form id="delete_query_string_form" method="POST">
+        @csrf
+        @method('DELETE')
+    </form>
+
+
+    <script>
+        function deleteQueryString(element) {
+            if (confirm('Are you sure you want to delete this item?')) {
+                let queryStringId = element.dataset.queryStringId;
+                let deleteQueryStringForm = document.getElementById('delete_query_term_form');
+                deleteQueryStringForm.action = `/api/{{ $api->id }}/querystring/${queryStringId}`;
+                deleteQueryStringForm.submit();
+            }
+        }
+    </script>
+
     <div class="@inner_page_container_classes">
         <div class="w-full space-y-8 bg-white p-8 rounded-lg shadow-lg">
             <form class="mt-8 space-y-6" action="{{ route('api.update', $api->id) }}" method="POST">
