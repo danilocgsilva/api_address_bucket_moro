@@ -4,11 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Api;
-use App\Models\QueryStringQueryTerm;
 use Illuminate\View\View;
 use App\Models\QueryString;
-use App\Models\QueryTerm;
-use DB;
+use Database\Repositories\QueryStringRepository;
 
 class QueryStringController extends Controller
 {
@@ -22,22 +20,11 @@ class QueryStringController extends Controller
         ]);
     }
 
-    public function store(Api $api, Request $request)
+    public function store(Api $api, Request $request, QueryStringRepository $queryStringRepository)
     {
-        DB::transaction(function () use ($api, $request) {
-            $newQueryString = new QueryString();
-            $api->queryStrings()->save($newQueryString);
+        $termString = $request->term;
 
-            $queryTerm = new QueryTerm();
-            $queryTerm->api_id = $api->id;
-            $queryTerm->term = $request->term;
-            $queryTerm->save();
-
-            $newQueryStringQueryTerm = new QueryStringQueryTerm();
-            $newQueryStringQueryTerm->query_term_id = $queryTerm->id;
-            $newQueryStringQueryTerm->query_string_id = $newQueryString->id;
-            $newQueryStringQueryTerm->save();
-        });
+        $queryStringRepository->addTerm($api, $termString);
 
         return redirect()
             ->route('api.show', ["api" => $api->id])
