@@ -12,19 +12,19 @@ use App\Models\QueryStringQueryTerm;
 
 class QueryStringRepository
 {
-    public function addTerm(Api $api, string $termString): void
+    public function addTerm(Api $api, int $termId): void
     {
-        DB::transaction(function () use ($api, $termString) {
+        DB::transaction(function () use ($api, $termId) {
             $newQueryString = new QueryString();
             $api->queryStrings()->save($newQueryString);
 
-            $queryTerm = new QueryTerm();
-            $queryTerm->api_id = $api->id;
-            $queryTerm->term = $termString;
-            $queryTerm->save();
+            // $queryTerm = new QueryTerm();
+            // $queryTerm->api_id = $api->id;
+            // $queryTerm->term = $termString;
+            // $queryTerm->save();
 
             $newQueryStringQueryTerm = new QueryStringQueryTerm();
-            $newQueryStringQueryTerm->query_term_id = $queryTerm->id;
+            $newQueryStringQueryTerm->query_term_id = $termId;
             $newQueryStringQueryTerm->query_string_id = $newQueryString->id;
             $newQueryStringQueryTerm->save();
         });

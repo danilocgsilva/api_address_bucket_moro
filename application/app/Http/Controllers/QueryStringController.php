@@ -22,9 +22,9 @@ class QueryStringController extends Controller
 
     public function store(Api $api, Request $request, QueryStringRepository $queryStringRepository)
     {
-        $termString = $request->term;
+        $termId = $request->query_term;
 
-        $queryStringRepository->addTerm($api, $termString);
+        $queryStringRepository->addTerm($api, (int) $termId);
 
         return redirect()
             ->route('api.show', ["api" => $api->id])

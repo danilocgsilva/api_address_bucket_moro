@@ -46,13 +46,5 @@
 
     </div>
 
-
-    <script>
-        document.getElementById('select-example').addEventListener('change', function(e) {
-            console.log('Selected option:', e.target.value);
-        });
-    </script>
-
-
     </script>
 @endsection
