@@ -11,4 +11,6 @@ Route::get('/', function () {
 
 Route::resource('api', ApiController::class);
 Route::resource("api.terms", QueryTermController::class);
-Route::resource("api.querystring", QueryStringController::class);
+Route::resource("api.querystring", QueryStringController::class, [
+    "except" => ["index", "edit"]
+]);

@@ -13,9 +13,9 @@ class QueryTermController extends Controller
     {
     }
 
-    public function create(): View
+    public function create(Api $api): View
     {
-        return view('fetchingquery.create');
+        return view('models.queryterm.create', ["api" => $api]);
     }
 
     /**

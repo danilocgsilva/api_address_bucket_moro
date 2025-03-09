@@ -39,7 +39,7 @@
                     @include('models.api._query_terms')
                 </div>
 
-                <h3>Query strings:</h3>
+                <h3>Paths with strings:</h3>
 
                 @php
                 $headers = ["Query Strings", "edit"];
@@ -67,9 +67,9 @@
                     </div>
 
                     <div class="w-full md:w-1/3 p-2">
-                        <a href="{{ route('api.querystring.create', $api->id) }}"
+                        <a href="{{ route('api.terms.create', $api->id) }}"
                             class="w-full justify-center inline-flex items-center px-6 py-2 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-700">
-                            Add new query string
+                            Add new query term
                         </a>
                     </div>
                 </div>

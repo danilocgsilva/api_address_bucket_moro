@@ -7,14 +7,11 @@ use App\Models\Api;
 use App\Models\QueryStringQueryTerm;
 use Illuminate\View\View;
 use App\Models\QueryString;
+use App\Models\QueryTerm;
+use DB;
 
 class QueryStringController extends Controller
 {
-    public function index()
-    {
-        //
-    }
-
     /**
      * Show the form for creating a new resource.
      */
@@ -27,21 +24,24 @@ class QueryStringController extends Controller
 
     public function store(Api $api, Request $request)
     {
-        $newQueryString = new QueryString();
-        $api->queryStrings()->save($newQueryString);
+        DB::transaction(function () use ($api, $request) {
+            $newQueryString = new QueryString();
+            $api->queryStrings()->save($newQueryString);
 
-        $newQueryStringQueryTerm = new QueryStringQueryTerm();
-        $newQueryStringQueryTerm->query_term_id = $request->query_term;
-        $newQueryStringQueryTerm->query_string_id = $newQueryString->id;
-        $newQueryStringQueryTerm->save();
+            $queryTerm = new QueryTerm();
+            $queryTerm->api_id = $api->id;
+            $queryTerm->term = $request->term;
+            $queryTerm->save();
+
+            $newQueryStringQueryTerm = new QueryStringQueryTerm();
+            $newQueryStringQueryTerm->query_term_id = $queryTerm->id;
+            $newQueryStringQueryTerm->query_string_id = $newQueryString->id;
+            $newQueryStringQueryTerm->save();
+        });
 
         return redirect()
             ->route('api.show', ["api" => $api->id])
             ->with('success', 'Query string just added.');
-    }
-
-    public function edit(Api $api, Request $request)
-    {
     }
 
     public function destroy(Api $api, QueryString $querystring)

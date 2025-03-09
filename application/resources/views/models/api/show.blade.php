@@ -30,7 +30,7 @@
         </div>
         <div class="mb-4">
             <label class="block text-gray-700 font-bold">
-                Query strings
+                Paths with query strings
             </label>
             @foreach ($api->queryStrings as $queryString)
                 <p class="text-gray-900">{{ $queryString->getString() }}</p>
